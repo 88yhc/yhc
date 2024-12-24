@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YH（代驾）电子名片</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* 整体卡片风格 */
+        .card {
+            position: relative;
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            overflow: hidden;
+        }
+
+        /* 发光边框动画 */
+        .card::before, .card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, #00d4ff, #3b82f6, #6b21a8, #00d4ff);
+            background-size: 400%;
+            border-radius: 20px;
+            animation: glowing 8s linear infinite;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        /* 名字部分 */
+        .name {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        /* 按钮风格 */
+        .button {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #00d4ff, #3b82f6);
+            box-shadow: 0 4px 10px rgba(0, 212, 255, 0.4);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, #3b82f6, #00d4ff);
+            box-shadow: 0 0 20px #00d4ff;
+            transform: scale(1.05);
+        }
+
+        /* 二维码样式 */
+        .qr-code img {
+            width: 150px;
+            height: 150px;
+            margin: 20px 0;
+            border: 2px solid #00d4ff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 名字 -->
+        <div class="name">YH（代驾）</div>
+
+        <!-- 联系人保存按钮 -->
+        <a class="button" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AYH%EF%BC%88%E4%BB%A3%E9%A9%BE%EF%BC%89%0ATEL%3A0146209298%0AEND%3AVCARD" download="YH_Contact.vcf">
+            保存联系人
+        </a>
+
+        <!-- 一键WhatsApp -->
+        <a class="button" href="https://wa.me/60146209298" target="_blank">
+            联系我（WhatsApp）
+        </a>
+
+        <!-- 微信二维码 -->
+        <div class="qr-code">
+            <p>扫描微信二维码</p>
+            <img src="https://i.imgur.com/qskFYJB.jpg" alt="WeChat QR Code">
+        </div>
+    </div>
+</body>
+</html>
